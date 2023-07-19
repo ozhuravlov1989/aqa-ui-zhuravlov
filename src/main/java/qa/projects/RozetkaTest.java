@@ -3,6 +3,7 @@ package qa.projects;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.projects.pages.BasePage;
@@ -46,17 +47,17 @@ public class RozetkaTest {
         int results1 = CatalogPage.gridProducts.size();
         CatalogPage.rozetkaFilter.click();
         int results2 = CatalogPage.gridProducts.size();
-        assert results1 == results2;
+        Assert.assertEquals(results1,results2,"Quantity of goods mismatch");
     }
 
     @Test
     public void Task4() {
         BasePage.searchField.setValue("iphone 13").pressEnter();
-        assert CatalogPage.productCardSmall.getSize().getHeight() == 458;
-        assert CatalogPage.productCardSmall.getSize().getWidth() == 209;
+        Assert.assertEquals(CatalogPage.productCardSmall.getSize().getHeight(),458);
+        Assert.assertEquals(CatalogPage.productCardSmall.getSize().getWidth(),209);
         CatalogPage.bigTileBtn.click();
-        assert CatalogPage.productCardBig.getSize().getHeight() == 527;
-        assert CatalogPage.productCardBig.getSize().getWidth() == 262;
+        Assert.assertEquals(CatalogPage.productCardBig.getSize().getHeight(),527);
+        Assert.assertEquals(CatalogPage.productCardBig.getSize().getWidth(),262);
     }
 
     @Test
@@ -65,6 +66,6 @@ public class RozetkaTest {
         CatalogPage.sortFromHigherPrice();
         int firstProductPrice = CatalogPage.getProductPrice(0);
         int secondProductPrice = CatalogPage.getProductPrice(1);
-        assert firstProductPrice > secondProductPrice;
+        Assert.assertTrue(firstProductPrice > secondProductPrice,"1st product price is less than second product price");
     }
 }
