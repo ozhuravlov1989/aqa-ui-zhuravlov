@@ -23,7 +23,7 @@ public class RozetkaTest {
         Cart.cartIsEmpty.shouldBe(Condition.visible);
         Cart.closeCart();
         BasePage.searchField.setValue("iphone").pressEnter();
-        CatalogPage.firstProductCartBtn.hover().click();
+        CatalogPage.getFirstProductCartBtn();
         Cart.cartBadge.shouldHave(Condition.text("1"));
         Cart.openCart();
         Cart.cartProductTitle.shouldHave(Condition.text("Мобільний телефон Apple iPhone 13"));

@@ -10,7 +10,6 @@ public class CatalogPage {
 
     public static ElementsCollection gridCategories = $$("li.portal-grid__cell");
     public static ElementsCollection gridProducts = $$(".catalog-grid__cell");
-    public static SelenideElement firstProductCartBtn = gridProducts.first().find(".buy-button");
     public static SelenideElement ipadCategory = $(".tile-cats__heading[title=\"iPad\"]");
     public static SelenideElement catalogHeader = $("div .catalog-heading");
     public static ElementsCollection activeFilters = $$("a.checkbox-filter__link");
@@ -36,6 +35,10 @@ public class CatalogPage {
 
     public static int getProductPrice(int a) {
         return Integer.parseInt((productsPrices.texts().get(a).replaceAll("[^0-9]","")));
+    }
+
+    public static void getFirstProductCartBtn(){
+        gridProducts.first().find(".buy-button").hover().click();
     }
 }
 
