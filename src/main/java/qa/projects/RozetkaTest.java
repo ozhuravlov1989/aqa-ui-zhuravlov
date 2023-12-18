@@ -2,7 +2,6 @@ package qa.projects;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -15,7 +14,7 @@ public class RozetkaTest {
 
     @BeforeMethod
     public void before() {
-        Configuration.browserSize = "1980x1080";
+//        Configuration.browserSize = "1980x1080";
         Selenide.open(BasePage.baseUrl);
     }
 
